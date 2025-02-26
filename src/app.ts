@@ -1,7 +1,8 @@
+
+import routes from "@routes/routes";
 import app from "@server/server";
 import { config } from "config";
 import dotenv from 'dotenv';
-import routes from "routes/routes";
 
 dotenv.config();
 

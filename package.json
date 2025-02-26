@@ -2,9 +2,10 @@
   "name": "ag-hotels-mngr",
   "version": "1.0.0",
   "description": "manager to admin hotels info",
-  "main": "index.js",
+  "main": "build/app.js",
   "scripts": {
-    "tsc": "tsc",
+    "build": "tsc",
+    "start": "ts-node -r tsconfig-paths/register ./build/app.js",
     "dev": "ts-node-dev --respawn -r tsconfig-paths/register src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
