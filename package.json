@@ -1,0 +1,38 @@
+{
+  "name": "ag-hotels-mngr",
+  "version": "1.0.0",
+  "description": "manager to admin hotels info",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "dev": "ts-node-dev --respawn -r tsconfig-paths/register src/app.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AgenteViajes/ag-hotels-mngr.git"
+  },
+  "keywords": [
+    "nodeJs",
+    "Express",
+    "Mysql"
+  ],
+  "author": "Emerson Vargas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AgenteViajes/ag-hotels-mngr/issues"
+  },
+  "homepage": "https://github.com/AgenteViajes/ag-hotels-mngr#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0",
+    "ts-node-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.3"
+  }
+}
