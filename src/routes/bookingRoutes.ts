@@ -3,8 +3,8 @@ import { BookingService } from "@services/BookingService";
 import { IBookingRepository, IBookingService } from "types/BookingTypes";
 import { Router } from "express";
 import { BookingSummaryData } from "@interfaces/IBookingTableData";
-const router = Router();
 
+const router = Router();
 const bookingRepository: IBookingRepository = new BookingRepository();
 const bookingService: IBookingService = new BookingService(bookingRepository);
 

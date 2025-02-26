@@ -1,5 +1,3 @@
-
-
 import bookingRouter from "@routes/BookingRoutes";
 import roomsRouter from "@routes/RoomsRoutes";
 import app from "@server/server";
