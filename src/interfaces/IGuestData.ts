@@ -1,13 +1,13 @@
 
 export interface IGuestData {
     firstName: string;
-    secondName: string;
+    secondName?: string;
     firstLastname: string;
     secondLastname: string;
     birthDate: string;
     gender: string;
     documentType: string;
-    documentNumber: number;
+    documentNumber: string;
     email: string;
     phoneNumber: string;
 }

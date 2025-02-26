@@ -16,7 +16,7 @@ export interface BookingData extends Omit<BookingTableData, 'HotelName' | 'titul
 }
 
 export interface BookingSummaryData extends Omit<BookingData, 'guestNumber' > {
-    titularId: number;
+    titularId: string;
     guest: IGuestData[];
     emergencyContact: IEmergencyContactData;
 }

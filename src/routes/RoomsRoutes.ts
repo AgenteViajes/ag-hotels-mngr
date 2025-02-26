@@ -9,17 +9,14 @@ const router = Router();
 const roomRepository: IRoomRepository = new RoomRepository();
 const roomService: IRoomService = new RoomService(roomRepository);
 
-export default () =>{
-    router.get('/health', (req, res)=>{
-        res.send('Api is healthy!!!')
-    });
+const roomsRouter = () =>{
 
-    router.get('/rooms', async (req, res)=>{
+    router.get('/', async (req, res)=>{
         const roomsFound = await roomService.findAllRooms();
         res.json(roomsFound);
     });
 
-    router.post('/rooms/filter', async (req, res)=>{
+    router.post('/filter', async (req, res)=>{
         const filters: RoomFilter = req.body;
         const roomsFound = await roomService.findRooms(filters);
         res.json(roomsFound);
@@ -27,3 +24,5 @@ export default () =>{
 
     return router;
 }
+
+export default roomsRouter;

@@ -2169,7 +2169,7 @@ export const defaultDataRooms: RoomData[] = [
     type: "Familiar",
     pathImg:
       "https://img.freepik.com/foto-gratis/muebles-madera-pared-fondo-limpio_1253-666.jpg?t=st=1740540704~exp=1740544304~hmac=0ddc4dcd417f04f696925d5edafd8dc23795ccaab39cad75ab7f75c7d1b3663f&w=1060",
-    capacity: 2,
+    capacity: 7,
     address: "85923 Crownhardt Park",
   },
   {

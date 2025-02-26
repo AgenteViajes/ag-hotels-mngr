@@ -1,5 +1,6 @@
 
-import routes from "@routes/routes";
+import bookingRouter from "@routes/Bookingroutes";
+import roomsRouter from "@routes/RoomsRoutes";
 import app from "@server/server";
 import { config } from "config";
 import dotenv from 'dotenv';
@@ -12,4 +13,5 @@ app.listen(port, ()=>{
     console.log(`Server is running on ${port}`);
 })
 
-app.use("/v1/api/hotels-mngr", routes());
+app.use("/v1/api/hotels-mngr/rooms", roomsRouter());
+app.use("/v1/api/hotels-mngr/booking", bookingRouter());
