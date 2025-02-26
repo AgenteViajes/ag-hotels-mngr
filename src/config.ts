@@ -1,3 +1,3 @@
 export const config = {
-    defaultPort: 4000
+    defaultPort: 8080
 }

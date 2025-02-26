@@ -4,8 +4,8 @@
   "description": "manager to admin hotels info",
   "main": "build/app.js",
   "scripts": {
-    "build": "tsc",
-    "start": "npm i && ts-node -r tsconfig-paths/register ./build/app.js",
+    "build": "tsc && tsc-alias",
+    "start": "node -r tsconfig-paths/register ./build/app.js",
     "dev": "ts-node-dev --respawn -r tsconfig-paths/register src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -33,6 +33,7 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/morgan": "^1.9.9",
+    "tsc-alias": "^1.8.11",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3"
   }
