@@ -1,5 +1,6 @@
 
-import bookingRouter from "@routes/Bookingroutes";
+
+import bookingRouter from "@routes/BookingRoutes";
 import roomsRouter from "@routes/RoomsRoutes";
 import app from "@server/server";
 import { config } from "config";
