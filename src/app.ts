@@ -1,5 +1,5 @@
-import bookingRouter from "@routes/BookingRoutes";
-import roomsRouter from "@routes/RoomsRoutes";
+import bookingRouter from "@routes/bookingRoutes";
+import roomsRouter from "@routes/roomsRoutes";
 import app from "@server/server";
 import { config } from "config";
 import dotenv from 'dotenv';
