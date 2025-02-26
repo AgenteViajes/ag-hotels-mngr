@@ -3,7 +3,7 @@ import { BookingSummaryData } from "@interfaces/IBookingTableData";
 export const defaultDataBookings: BookingSummaryData[] = [
   {
     "idBooking":"1e507b5b-3272-4d9f-97aa-f9ea87d175fe",
-    "titularId": "8412946448",
+    "titularId": 8412946448,
     "startDate":"01/03/2025",
     "endDate":"16/03/2025",
     "quantityDays":7,
@@ -28,7 +28,7 @@ export const defaultDataBookings: BookingSummaryData[] = [
           "birthDate":"27/05/2002",
           "gender":"Masculino",
           "documentType":"CC",
-          "documentNumber":"8412946448",
+          "documentNumber":8412946448,
           "email":"emrvargaitaz@gmail.com",
           "phoneNumber":"4237157172"
        },
@@ -40,7 +40,7 @@ export const defaultDataBookings: BookingSummaryData[] = [
           "birthDate":"23/08/2001",
           "gender":"Femenino",
           "documentType":"TC",
-          "documentNumber":"4091073239",
+          "documentNumber":4091073239,
           "email":"vmalling1@ycombinator.com",
           "phoneNumber":"3841695337"
        },
@@ -52,7 +52,7 @@ export const defaultDataBookings: BookingSummaryData[] = [
           "birthDate":"23/05/2000",
           "gender":"Masculino",
           "documentType":"CE",
-          "documentNumber":"0720345537",
+          "documentNumber":720345537,
           "email":"bmarsy2@phpbb.com",
           "phoneNumber":"4290827306"
        }

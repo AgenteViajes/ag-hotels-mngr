@@ -7,7 +7,7 @@ export interface IGuestData {
     birthDate: string;
     gender: string;
     documentType: string;
-    documentNumber: string;
+    documentNumber: number;
     email: string;
     phoneNumber: string;
 }
