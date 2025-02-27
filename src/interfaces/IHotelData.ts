@@ -1,18 +1,21 @@
-import { RoomDetailData } from "./IRoomData";
+import { RoomDto } from "./IRoomData";
 
-export interface HotelData {
+export interface IHotelDto {
     id: string;
     name: string;
     city: string;
     address: string;
-    innactivateRooms: number;
-    activateRooms: number;
+    rating: number;
     status: string;
 }
 
-export interface HotelDetailData extends HotelData {
-    rating: number;
-    rooms: RoomDetailData[];
+export interface IHotelData extends IHotelDto {
+    innactivateRooms: number;
+    activateRooms: number;
 }
 
-export interface RegisterHotel extends Omit<HotelDetailData, 'id'|'innactivateRooms'|'activateRooms'| 'rooms'> {}
+export interface IHotelComplete extends IHotelData {
+    rooms: RoomDto[]
+}
+
+export interface IRegisterHotel extends Omit<IHotelDto, 'id'> {}

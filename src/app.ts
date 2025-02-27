@@ -1,4 +1,5 @@
 import bookingRouter from "@routes/bookingRoutes";
+import hotelRouter from "@routes/hotelRoutes";
 import roomsRouter from "@routes/roomRoutes";
 import app from "@server/server";
 import { config } from "config";
@@ -14,3 +15,5 @@ app.listen(port, ()=>{
 
 app.use("/v1/api/hotels-mngr/rooms", roomsRouter());
 app.use("/v1/api/hotels-mngr/booking", bookingRouter());
+app.use("/v1/api/hotels-mngr/hotels", hotelRouter());
+

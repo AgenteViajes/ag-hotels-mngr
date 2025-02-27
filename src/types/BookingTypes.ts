@@ -7,7 +7,7 @@ export interface IBookingRepository extends Repository<BookingSummaryData>{
 }
 
 export interface IBookingService {
-    registerBooking(room: BookingSummaryData): Promise<BookingSummaryData>;
+    registerBooking(booking: BookingSummaryData): Promise<BookingSummaryData>;
     findBooking(id: BookingSummaryData["idBooking"]): Promise<BookingSummaryData | undefined>;
     findAllBasic():  Promise<BookingTableData[]>;
 }
