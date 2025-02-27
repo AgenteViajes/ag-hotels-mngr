@@ -13,7 +13,7 @@ app.listen(port, ()=>{
     console.log(`Server is running on ${port}`);
 })
 
-app.use("/v1/api/hotels-mngr/rooms", roomsRouter());
+app.use("/v1/api/hotels-mngr/room", roomsRouter());
 app.use("/v1/api/hotels-mngr/booking", bookingRouter());
 app.use("/v1/api/hotels-mngr/hotel", hotelRouter());
 
