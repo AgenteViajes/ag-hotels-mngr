@@ -1,4 +1,4 @@
-import { BookingSummaryData } from "@interfaces/IBookingTableData";
+import { BookingSummaryData, BookingTableData } from "@interfaces/IBookingTableData";
 import { IBookingRepository, IBookingService } from "types/BookingTypes";
 import { EmailService } from "./EmailService";
 
@@ -26,8 +26,8 @@ export class BookingService implements IBookingService {
     }
 
 
-    async findAll(): Promise<BookingSummaryData[]> {
-        return this.bookingRepository.findAll();
+    async findAllBasic(): Promise<BookingTableData[]> {
+        return this.bookingRepository.findAllBasic();
     }
     
 }

@@ -9,6 +9,11 @@ const bookingRepository: IBookingRepository = new BookingRepository();
 const bookingService: IBookingService = new BookingService(bookingRepository);
 
 const bookingRouter = () =>{
+    router.get('/basic', async (req, res)=>{
+        const bookingsFound = await bookingService.findAllBasic();
+        res.json(bookingsFound);
+    });
+
     router.get('/:id', async (req, res)=>{
         const bookingId = req.params.id;
         const bookingFound = await bookingService.findBooking(bookingId);
@@ -19,11 +24,6 @@ const bookingRouter = () =>{
                 error: 'No se encontraron registros con los criterios seleccionados'
             });
         }
-    });
-
-    router.get('/', async (req, res)=>{
-        const bookingsFound = await bookingService.findAll();
-        res.json(bookingsFound);
     });
 
     router.post('/register', async (req, res)=>{
