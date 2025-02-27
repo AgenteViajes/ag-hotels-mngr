@@ -1,7 +1,8 @@
 import { IHotelDto } from "@interfaces/IHotelData";
-import { RoomData, RoomDto } from "interfaces/IRoomData";
+import { IRegisterRoom, IUpdateRoom, RoomData, RoomDto } from "interfaces/IRoomData";
 import { RoomFilter } from "interfaces/IRoomFilter";
 import { IRoomRepository, IRoomService } from "types/RoomsTypes";
+import { v4 as uuidv4 } from 'uuid';
 
 export class RoomService implements IRoomService {
     private roomRepository: IRoomRepository;
@@ -10,8 +11,16 @@ export class RoomService implements IRoomService {
         this.roomRepository = repository;
     }
 
-    async createRoom(room: RoomData): Promise<RoomData> {
-        return this.roomRepository.create(room);
+    async updateRoom(room: IUpdateRoom, id: RoomDto["id"]): Promise<RoomDto | undefined> {
+        return this.roomRepository.updateRoom(room, id);
+    }
+
+    async createRoom(room: IRegisterRoom): Promise<RoomDto> {
+        const registerRoom: RoomDto = {
+            ...room,
+            id: uuidv4(),
+        }
+        return this.roomRepository.create(registerRoom);
     }
 
     async findRooms(filters: RoomFilter): Promise<RoomData[]> {
@@ -23,7 +32,7 @@ export class RoomService implements IRoomService {
     }
 
     async findAllRooms(): Promise<RoomData[]> {
-        return this.roomRepository.findAll();
+        return this.roomRepository.findAllRooms();
     }
     
 }

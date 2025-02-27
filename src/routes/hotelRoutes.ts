@@ -29,6 +29,19 @@ const hotelRouter = () =>{
         }
     });
 
+    router.put('/:id', async (req, res)=>{
+        const hotelId = req.params.id;
+        const data: IRegisterHotel = req.body;
+        const hotelFound = await hotelService.updateHotel(data, hotelId);
+        if (hotelFound) {
+            res.json(hotelFound);
+        }else{
+            res.status(500).json({
+                error: 'No se encontraron registros con los criterios seleccionados'
+            });
+        }
+    });
+
     router.post('/register', async (req, res)=>{
         const data: IRegisterHotel = req.body;
         const hotelSaved = await hotelService.registerHotel(data);

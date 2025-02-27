@@ -9,7 +9,9 @@ export interface RoomDto {
     location: string;
     status: string;
 }
-export interface RegisterRoom extends Omit<RoomDto, 'id'> {}
+export interface IRegisterRoom extends Omit<RoomDto, 'id'> {}
+
+export interface IUpdateRoom extends Omit<RoomDto, 'id' | 'pathImg' | 'hotelId' | 'capacity'> {}
 
 export interface RoomData extends Omit<RoomDto, 'hotelId'| 'location'| 'status'> {
     hotelName: string;

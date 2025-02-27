@@ -13,6 +13,10 @@ export class HotelService implements IHotelService {
         this.roomRepository = roomRepository;
     }
 
+    updateHotel(hotel: IRegisterHotel, id: IHotelDto['id']): Promise<IHotelDto | undefined> {
+        return this.hotelRepository.updateHotel(hotel, id);
+    }
+
     registerHotel(hotel: IRegisterHotel): Promise<IHotelDto> {
         const hotelToSave: IHotelDto = {
             ...hotel,
