@@ -15,5 +15,5 @@ app.listen(port, ()=>{
 
 app.use("/v1/api/hotels-mngr/rooms", roomsRouter());
 app.use("/v1/api/hotels-mngr/booking", bookingRouter());
-app.use("/v1/api/hotels-mngr/hotels", hotelRouter());
+app.use("/v1/api/hotels-mngr/hotel", hotelRouter());
 
