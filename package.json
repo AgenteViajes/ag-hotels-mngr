@@ -1,6 +1,6 @@
 {
   "name": "ag-hotels-mngr",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "manager to admin hotels info",
   "main": "build/app.js",
   "scripts": {
