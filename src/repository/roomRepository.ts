@@ -1,19 +1,18 @@
+import { StatusRoom } from "@enum/EStatusRoom";
 import { IHotelDto } from "@interfaces/IHotelData";
 import { dfDataRoomsDto } from "@MockData/mockRoomsDto";
-import { IUpdateRoom, RoomData, RoomDto } from "interfaces/IRoomData";
+import {  IUpdateRoom, RoomDto } from "interfaces/IRoomData";
 import { RoomFilter } from "interfaces/IRoomFilter";
-import { defaultDataRooms } from "MockData/mockRooms";
 import { IRoomRepository } from "types/RoomsTypes";
 
 export class RoomRepository implements IRoomRepository {
-    private rooms: RoomData[] = defaultDataRooms;
     private roomsData: RoomDto[] = dfDataRoomsDto;
     
-    findFiltered(filters: RoomFilter): Promise<RoomData[]> {
-        const roomsFiltered = this.rooms.filter((room)=>{
-            const cityMatches = (room.city === filters.city);
+    findFiltered(filters: RoomFilter): Promise<RoomDto[]> {
+        const roomsFiltered = this.roomsData.filter((room)=>{
+            const isActivate = (room.status === StatusRoom.ENABLED);
             const isCapacityAllowed = (room.capacity >= filters.peopleCount);
-            return cityMatches && isCapacityAllowed;
+            return isActivate && isCapacityAllowed;
         });
         return Promise.resolve(roomsFiltered);
     }
@@ -37,10 +36,6 @@ export class RoomRepository implements IRoomRepository {
 
     findAll(): Promise<RoomDto[]> {
         return Promise.resolve(this.roomsData);
-    }
-
-    findAllRooms(): Promise<RoomData[]> {
-        return Promise.resolve(this.rooms);
     }
 
     findByHotelId(hotelId: IHotelDto['id']): Promise<RoomDto[]> {

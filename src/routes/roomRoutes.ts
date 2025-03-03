@@ -1,19 +1,28 @@
 import { IRegisterRoom, IUpdateRoom } from "@interfaces/IRoomData";
+import { HotelRepository } from "@repository/HotelRepository";
+import { IHotelRepository } from "types/HotelTypes";
 import { Router } from "express";
 import { RoomFilter } from "interfaces/IRoomFilter";
 import { RoomRepository } from "repository/roomRepository";
 import { RoomService } from "services/RoomService";
 import { IRoomRepository, IRoomService } from "types/RoomsTypes";
+import { BookingRepository } from "@repository/bookingRepository";
+import { IBookingRepository } from "types/BookingTypes";
 
 const router = Router();
 
 const roomRepository: IRoomRepository = new RoomRepository();
-const roomService: IRoomService = new RoomService(roomRepository);
+const hotelRepository: IHotelRepository = new HotelRepository();
+const bookingRepository: IBookingRepository = new BookingRepository();
+
+
+
+const roomService: IRoomService = new RoomService(roomRepository, hotelRepository, bookingRepository);
 
 const roomsRouter = () =>{
 
     router.get('/', async (req, res)=>{
-        const roomsFound = await roomService.findAllRooms();
+        const roomsFound = await roomService.findActivateRooms();
         res.json(roomsFound);
     });
 

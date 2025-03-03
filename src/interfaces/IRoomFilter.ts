@@ -4,3 +4,5 @@ export interface RoomFilter {
     city: string;
     peopleCount: number;
 }
+
+export interface IDatesFilter extends Pick<RoomFilter, 'startDate' | 'endDate'>{}

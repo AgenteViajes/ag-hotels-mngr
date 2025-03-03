@@ -3,6 +3,7 @@ import { IHotelComplete, IHotelData, IHotelDto, IRegisterHotel } from "@interfac
 import { IHotelRepository, IHotelService } from "types/HotelTypes";
 import { IRoomRepository } from "types/RoomsTypes";
 import { StatusRoom } from "@enum/EStatusRoom";
+import { RoomDto } from '@interfaces/IRoomData';
 
 export class HotelService implements IHotelService {
     private hotelRepository: IHotelRepository;
@@ -51,25 +52,29 @@ export class HotelService implements IHotelService {
     
     async findAllData(): Promise<IHotelData[]> {
         const hotels = await this.hotelRepository.findAll();
-        const hotelsComplete = await Promise.all(
-            hotels.map(async (hotel)=>{
-                const rooms = await this.roomRepository.findByHotelId(hotel.id);
-                const counterRooms = rooms.reduce((counter, room)=>{
-                    if (room.status === StatusRoom.ENABLED) {
-                        counter.activate++;
-                    }else if (room.status === StatusRoom.DISABLED) {
-                        counter.disabled++;
-                    }
-                    return counter;
-                }, { activate: 0, disabled: 0})
-                const hotelComplete: IHotelData = {
-                    ...hotel,
-                    innactivateRooms: counterRooms.disabled,
-                    activateRooms: counterRooms.activate
+        const rooms = await this.roomRepository.findAll();
+        const indexedRooms = rooms.reduce<Record<string,RoomDto[]>>((sorter, room)=>{
+            if(!sorter[room.hotelId]) sorter[room.hotelId]=[];
+            sorter[room.hotelId].push(room);
+            return sorter;
+        }, {});
+        const hotelsComplete = hotels.map((hotel)=>{
+            const hotelRooms = indexedRooms[hotel.id];
+            const counterRooms = hotelRooms.reduce((counter, room)=>{
+                if (room.status === StatusRoom.ENABLED) {
+                    counter.activate++;
+                }else if (room.status === StatusRoom.DISABLED) {
+                    counter.disabled++;
                 }
-                return hotelComplete;
-            })
-        );
+                return counter;
+            }, { activate: 0, disabled: 0})
+            const hotelComplete: IHotelData = {
+                ...hotel,
+                innactivateRooms: counterRooms.disabled,
+                activateRooms: counterRooms.activate
+            }
+            return hotelComplete;
+        });
         return Promise.resolve(hotelsComplete);
     }
     
