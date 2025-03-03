@@ -59,7 +59,7 @@ export class HotelService implements IHotelService {
             return sorter;
         }, {});
         const hotelsComplete = hotels.map((hotel)=>{
-            const hotelRooms = indexedRooms[hotel.id];
+            const hotelRooms = indexedRooms[hotel.id] || [];
             const counterRooms = hotelRooms.reduce((counter, room)=>{
                 if (room.status === StatusRoom.ENABLED) {
                     counter.activate++;

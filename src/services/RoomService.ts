@@ -81,7 +81,7 @@ export class RoomService implements IRoomService {
             if(!sorter[room.hotelId]) sorter[room.hotelId]=[];
             if(room.status === StatusRoom.ENABLED) sorter[room.hotelId].push(room);
             return sorter;
-        }, {});
+        }, {}) || [];
         const hotels = await this.hotelRepository.findAll();
         const roomsData: RoomData[] = hotels
             .filter(hotel => hotel.status === StatusRoom.ENABLED)
